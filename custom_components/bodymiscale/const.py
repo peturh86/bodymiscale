@@ -5,7 +5,7 @@ from homeassistant.const import Platform
 MIN_REQUIRED_HA_VERSION = "2026.3.0"
 NAME = "BodyMiScale"
 DOMAIN = "bodymiscale"
-VERSION = "2026.8.0"
+VERSION = "2026.8.1"
 ISSUE_URL = "https://github.com/dckiller51/bodymiscale/issues"
 
 # System keys for hass.data[DOMAIN]
@@ -13,6 +13,8 @@ COMPONENT = "component"
 HANDLERS = "handlers"
 MAIN_ENTITIES = "main_entities"
 NOTIFICATION_COORDINATOR = "notification_coordinator"
+
+SERVICE_IMPORT_BLUETOOTH_SCALE_HISTORY = "import_bluetooth_scale_history"
 
 # User config
 CONF_BIRTHDAY = "birthday"
