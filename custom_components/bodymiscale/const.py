@@ -14,8 +14,6 @@ HANDLERS = "handlers"
 MAIN_ENTITIES = "main_entities"
 NOTIFICATION_COORDINATOR = "notification_coordinator"
 
-SERVICE_IMPORT_BLUETOOTH_SCALE_HISTORY = "import_bluetooth_scale_history"
-
 # User config
 CONF_BIRTHDAY = "birthday"
 CONF_GENDER = "gender"
@@ -145,7 +143,7 @@ CONSTRAINT_WEIGHT_MIN = 10
 CONSTRAINT_WEIGHT_MAX = 200
 
 # Home Assistant
-PLATFORMS: set[Platform] = {Platform.SENSOR}
+PLATFORMS: set[Platform] = {Platform.SENSOR, Platform.BUTTON}
 
 # Debounce delays
 # waits for all sensors to settle before recalculating
