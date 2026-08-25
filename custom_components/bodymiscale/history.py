@@ -1,5 +1,7 @@
 """Historical measurement import support for BodyMiScale."""
 
+# pylint: disable=protected-access
+
 from __future__ import annotations
 
 from collections import defaultdict
@@ -165,7 +167,7 @@ async def async_import_bluetooth_scale_history(
     for measurement in sorted(
         measurements, key=lambda item: item.timestamp, reverse=True
     ):
-        entry_id = _assign_profile(hass, handlers, tracks, measurement.weight_kg)
+        entry_id = _assign_profile(handlers, tracks, measurement.weight_kg)
         if entry_id is None:
             unassigned += 1
             continue
@@ -181,7 +183,7 @@ async def async_import_bluetooth_scale_history(
             hass, handler, profile_measurements
         )
         profile_results[str(handler.config.get(CONF_NAME, entry_id))] = result
-        total_statistic_rows += result["statistic_rows"]
+        total_statistic_rows += int(result["statistic_rows"])
 
     return {
         "source_measurements": len(measurements),
@@ -223,7 +225,6 @@ def _parse_measurements(items: list[Any]) -> list[HistoricalMeasurement]:
 
 
 def _assign_profile(
-    hass: HomeAssistant,
     handlers: dict[str, BodyScaleMetricsHandler],
     tracks: dict[str, float | None],
     weight: float,
